@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta property="og:title" content="HTML Form Emailer" />
+        <meta property="title" content="HTML Form Emailer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="HTML Form Emailer - Help - by SMLkaiellis08" />
+        <meta name="description" content="HTML Form Emailer - Help - by SMLkaiellis08" />
+        <meta name="og:image" content="/favicon.png" />
+        <meta name="theme-color" content="#F1C40F" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+        <link href="https://fonts.googleapis.com/icon?family=Markazi+Text" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/Assets/css/main.css">
+        <link rel="stylesheet" href="/Assets/css/php.css">
+        <link rel="stylesheet" href="/Assets/css/table.css">
+				<script src="/Assets/js/Mail.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>HTML Form Emailer</title>
+    </head>
+    <body>
+        <div id="content" class="center">
+
+            <h2>HTML Form Template</h2>
+            <!-- Textarea records tabs !-->
+    <div class="input-holder">
+        <textarea cols="130" rows="30" name="index.html" readonly>
+    <html lang="en">
+        <head>
+            <title>template</title>
+            <script src="Mail.js"></script>
+        </head>
+        
+        <body>
+            <form id="index" action="https://mail.magma-mc.net" method="POST">
+                <div class="input-holder">
+                    <input class="input" name="Form[Email]" id="Email" type="email" value="" placeholder="email">
+                </div>
+
+                <div class="input-holder">
+                    <input class="input" name="Form[Message]" id="message" type="text" value="" placeholder="Message">
+                </div>
+
+                <div id="PHP values">
+                    <input name="Form[Message]" id="Message" type="hidden" value="Null">
+                    <input name="Form[subject]" type="hidden" value="Subject Here">
+                    <input name="Form[Admin_Email]" type="hidden" value="YourEmail@gmail.com">
+                </div>
+
+                <button class="button" type="submit" onclick="compile_message()">Sumbit</button>
+
+            </form>
+        </body>
+    </html>
+        </textarea>
+        <div class="placeholder">index.html</div>
+        <div class="desc">Main Form HTML file.</div>
+    </div>
+    <div class="input-holder">
+        <textarea cols="130" rows="10" name="main.js" readonly>
+function compile_message() {
+    // Ids of input that you want to be sent to admin
+    var email = document.getElementById("Email").value;
+    var Msg = document.getElementById("message").value;
+    
+    // set the values to a input for the code to read
+    document.getElementById("Message").value = "Email: " + email + "\n Message: " + Msg;
+}
+        </textarea>
+        <div class="placeholder">Mail.js</div>
+        <div class="desc">Make php able to read message.</div>
+    </div>
+
+    <div class="input-holder">
+        <textarea cols="130" rows="25" name="Reply" readonly>
+    <!--Message edited by - Mail.js-->
+    <!--Value type - Null-->
+<input name="Form[Message]" id="Message" type="hidden" value="Null">
+
+
+    <!--Subject for Form Submition-->
+    <!--Value type - Subject-->
+<input name="Form[subject]" type="hidden" value="">
+
+
+    <!--Admin Email that form will be sent to-->
+    <!--Value type - Admin Email -->
+<input name="Form[Admin_Email]" type="hidden" value="">
+
+
+    <!--Reply to user when form sent make sure you have Email Input-->
+    <!--Value type - true/false-->
+<input name="Form[reply]" type="hidden" value="">
+
+
+    <!--Redirect to website when submited-->
+    <!--Value type - Url-->
+<input name="Form[Redirect]" type="hidden" value="">
+        </textarea>
+
+        <div class="placeholder">PHP values</div>
+        <div class="desc">Php values. Options for Submitions</div>
+    </div>
+
+    <button class="button" onclick="window.location.href = 'test.html'">try</button>
+        </div>
+
+				<br><br><a onclick="window.location.href = ('http://magma-mc.net')" class="bed">©2020-2021 kaicycle, inc.</a>
+    </body>
+</html>

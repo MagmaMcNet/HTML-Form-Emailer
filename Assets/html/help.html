@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta property="og:title" content="HTML Form Emailer" />
+        <meta property="title" content="HTML Form Emailer" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="HTML Form Emailer - Help - by SMLkaiellis08" />
+        <meta name="description" content="HTML Form Emailer - Help - by SMLkaiellis08" />
+        <meta name="og:image" content="https://mail.magma-mc.net/favicon.png" />
+        <meta name="theme-color" content="#F1C40F" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <link rel="shortcut icon" type="image/png" href="https://mail.magma-mc.net/favicon.png" />
+        <link href="https://fonts.googleapis.com/icon?family=Markazi+Text" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" />
+        <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/Assets/css/main.css">
+        <link rel="stylesheet" href="/Assets/css/php.css">
+        <link rel="stylesheet" href="/Assets/css/table.css">
+				<script src="/Assets/js/Mail.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <title>HTML Form Emailer</title>
+    </head>
+    <body>
+        <div id="content" class="center">
+            <h2>HTML Form Template</h2>
+            <!-- Textarea records tabs !-->
+    <div class="input-holder">
+        <textarea cols="130" rows="25" name="index.html" readonly>
+    <html lang="en">
+        <head>
+            <title>template</title>
+        </head>
+        
+        <body>
+            <form action="https://mail.magma-mc.net" method="POST">
+                <div class="input-holder">
+                    <input class="input" name="Form[Email]" id="Email" type="email" value="" placeholder="email">
+                </div>
+
+                <div class="input-holder">
+                    <input class="input" name="Form[Message]" id="message" type="text" value="" placeholder="Message">
+                </div>
+
+                <div id="ES">
+                    <input name="EmailService[ID]" type="hidden" value="ID/FILENAME eg bfaldo5Pgr/Test_MailService">
+                </div>
+                <button class="button" type="submit">Sumbit</button>
+            </form>
+        </body>
+    </html>
+        </textarea>
+    </div>
+
+    <button class="button" onclick="window.location.href = 'test.html'">try</button>
+        </div>
+    </body>
+</html>

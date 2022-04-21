@@ -1,0 +1,51 @@
+:root {
+    --background-color: #21282e;
+    --background-2: #384652;
+    --color: #ffda0a;
+    --primary: #000000;
+    --secondary: #cf6e1f;
+    --text-secondary: rgb(145, 145, 145);
+    --button-primary: #ad0000;
+    --primary-red: #ad0000;
+    --secondary-orange: #e97313;
+    --primary-green: #56e05a;
+    --discord-button: #3c4b5a;
+    --curseforge-button: #cf6813;
+}
+.themechange {
+    background-image: var(--discord-button);
+  }
+.body {
+    background-image: url("http://magma-mc.net/Assets/img/projects-BIRU.background-blur.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+.desc {
+    transition: ease-in-out 0.8s all;
+    font-weight: 500;
+    outline-color: invert;
+    outline-width: thick;
+}
+.desc:hover {
+    transition: ease-in-out 0.8s all;
+    font-weight: bold;
+    font-size: 16.5px;
+    color: #000000;
+}
+.support {
+    padding: 20px;
+    height: 95px; 
+    box-shadow: 0 0 4px 0.5px var(--text-secondary);
+    margin: 20px;
+    display: inline-block;
+    width: calc(80vw / 4);
+    transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s;
+  }
+  .support:hover {
+    box-shadow: 0 0 12px 0.5px var(--text-secondary);
+    transform: translateY(-0.30em);
+  }
+  h2 .colour2 {
+      color: green;
+  }

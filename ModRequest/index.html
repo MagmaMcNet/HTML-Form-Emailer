@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta property="og:title" content="HTML Form Emailer" />
+    <meta property="title" content="HTML Form Emailer" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="HTML Form Emailer - Uploader - by SMLkaiellis08" />
+    <meta name="description" content="HTML Form Emailer - Uploader - by SMLkaiellis08" />
+    <meta name="og:image" content="/favicon.png" />
+    <meta name="theme-color" content="#F1C40F" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link rel="shortcut icon" type="image/png" href="/favicon.png" />
+    <link href="https://fonts.googleapis.com/icon?family=Markazi+Text" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Assets/css/main.css">
+    <link rel="stylesheet" href="/Assets/css/php.css">
+    <script src="/Assets/js/Mail.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>HTML Form Emailer</title>
+    <script src="../js/Mail.js"></script>
+</head>
+
+
+<body>
+    <div id="content" class="center">
+        <h1>Mod Request Form</h1>
+        <form id="index" action="https://mail.magma-mc.net" method="POST" enctype="multipart/form-data">
+            <p>Mod Name</p>
+            <div class="input-holder">
+                <select id="ModName" name="Form[ModName]" required>
+                    <option value="MW">Magma World</option>
+                    <option value="MT">Magma Tech</option>
+                    <option value="SMLA">SMLApi (soon dep)</option>
+                    <option value="MB">MoreBlocks (dep)</option>
+                    <option value="DTM">Darkness (standby)</option>
+                </select>
+            </div>
+            <br />
+
+            <div class="input-holder">
+                <input class="input" name="Form[Email]" id="email" type="email" value="anonymous@magma-mc.net" placeholder="Email">
+            </div>
+            <br />
+
+            <div class="input-holder">
+                <input class="input" name="Form[Message]" id="message" type="text" value="" placeholder="Message" required>
+            </div>
+            <br />
+
+            <div class="input-holder">
+                <input class="input" name="Form[File]" id="File" type="file" value="" placeholder="Image" accept="image/*, video/*, .java">
+            </div>
+            <input name="Form[Message]" id="Message" type="hidden" value="Null">
+            <input name="Form[subject]" type="hidden" value="File Upload">
+            <input name="Form[Admin_Email]" type="hidden" value="kaicycle11@gmail.com">
+
+            <div id="ES">
+                <input name="EmailService[ID]" type="hidden" value="files/upload">
+                <input name="Form[Reply]" type="hidden" value="true">
+            </div>
+            <button class="button" type="submit" onclick="compile_upload()">Sumbit</button>
+        </form>
+    </div>
+
+    </div>
+</body>
+
+</html>
+<script>
+    // Iterate over each select element
+    $('select').each(function() {
+
+        // Cache the number of options
+        var $this = $(this),
+            numberOfOptions = $(this).children('option').length;
+
+        // Hides the select element
+        $this.addClass('s-hidden');
+
+        // Wrap the select element in a div
+        $this.wrap('<div class="select"></div>');
+
+        // Insert a styled div to sit over the top of the hidden select element
+        $this.after('<div class="styledSelect"></div>');
+
+        // Cache the styled div
+        var $styledSelect = $this.next('div.styledSelect');
+
+        // Show the first select option in the styled div
+        $styledSelect.text($this.children('option').eq(0).text());
+
+        // Insert an unordered list after the styled div and also cache the list
+        var $list = $('<ul />', {
+            'class': 'options'
+        }).insertAfter($styledSelect);
+
+        // Insert a list item into the unordered list for each select option
+        for (var i = 0; i < numberOfOptions; i++) {
+            $('<li />', {
+                text: $this.children('option').eq(i).text(),
+                rel: $this.children('option').eq(i).val()
+            }).appendTo($list);
+        }
+
+        // Cache the list items
+        var $listItems = $list.children('li');
+
+        // Show the unordered list when the styled div is clicked (also hides it if the div is clicked again)
+        $styledSelect.click(function(e) {
+            e.stopPropagation();
+            $('div.styledSelect.active').each(function() {
+                $(this).removeClass('active').next('ul.options').hide();
+            });
+            $(this).toggleClass('active').next('ul.options').toggle();
+        });
+
+        // Hides the unordered list when a list item is clicked and updates the styled div to show the selected list item
+        // Updates the select element to have the value of the equivalent option
+        $listItems.click(function(e) {
+            e.stopPropagation();
+            $styledSelect.text($(this).text()).removeClass('active');
+            $this.val($(this).attr('rel'));
+            $list.hide();
+            /* alert($this.val()); Uncomment this for demonstration! */
+        });
+
+        // Hides the unordered list when clicking outside of it
+        $(document).click(function() {
+            $styledSelect.removeClass('active');
+            $list.hide();
+        });
+
+    });
+    var image_video_upload = document.getElementById("File");
+    var uploadField = document.getElementById("File");
+
+
+    image_video_upload.onchange = function() {
+        if (this.files[0].size > 1e+7) {
+            alert("File is too big!\nWill send back an error!");
+        };
+    };
+</script>

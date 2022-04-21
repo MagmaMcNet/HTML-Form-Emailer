@@ -1,0 +1,112 @@
+:root {
+    --background-color: #272d33;
+    --background-2: #2d373f;
+    --color: #d6d6d6;
+    --primary: rgb(117, 93, 110);
+    --secondary: rgb(238, 142, 64);
+    --text-secondary: rgb(47, 255, 75);
+    --button-primary: #ad0000;
+    --primary-red: #ad0000;
+    --secondary-orange: #e97313;
+    --primary-green: #56e05a;
+    --discord-button: #3c4b5a;
+    --curseforge-button: #cf6813;
+}
+        textarea {
+            color: white;
+            resize: vertical;
+            background-color: black;
+        }
+				
+.bed {
+  top: 96%;
+  padding: 1%;
+  background-color: black;
+  width: 100%;
+  position: fixed; 
+  margin: -1%; 
+  box-shadow: rgb(0, 0, 0) 0px 10px 10px 10px;
+  transition: 400ms all ease-in-out;
+}
+.bed:hover {
+  transition: 400ms all ease-in-out;
+  top: 95%;
+  box-shadow: rgb(0, 0, 0) 0px 10px 10px 15px;
+}
+.bed2 {
+	text-align: right;
+  top: 96%;
+  padding: 1%;
+  width: 100%;
+  position: fixed; 
+  margin: -1%; 
+  box-shadow: rgb(0, 0, 0) 0px 10px 10px 10px;
+  transition: 400ms all ease-in-out;
+}
+.bed2:hover {
+	color: rgb(47, 255, 75);
+	text-decoration: none;
+}
+.top {
+  text-align: right;
+  top: 1%;
+  padding: 1%;
+  background-color: black;
+  width: 100%;
+  height: 0.25%;
+  position: fixed; 
+  margin: -1%; 
+  box-shadow: rgb(0, 0, 0) 0px 10px 10px 10px;
+  transition: 400ms all ease-in-out;
+}
+.top:hover {
+	color: rgb(47, 255, 75);
+	text-decoration: none;
+}
+
+.top2 {
+	text-align: right;
+	text-size-adjust: initial;
+  top: 1%;
+  padding: 1%;
+  width: 85%;
+	height: 0.25%;
+  position: fixed; 
+  margin: -1%; 
+  transition: 400ms all ease-in-out;
+}
+.top2:hover {
+	color: rgb(47, 255, 75);
+	text-decoration: none;
+}
+
+.top3 {
+	text-align: right;
+	text-size-adjust: initial;
+  top: 1%;
+  padding: 1%;
+  width: 70%;
+	height: 0.25%;
+  position: fixed; 
+  margin: -1%; 
+  transition: 400ms all ease-in-out;
+}
+.top3:hover {
+	color: rgb(47, 255, 75);
+	text-decoration: none;
+}
+
+.top4 {
+	text-align: left;
+  top: 1%;
+  padding: 1%;
+  width: 25%;
+	height: 0.25%;
+  position: fixed; 
+  margin: -1%; 
+  transition: 400ms all ease-in-out;
+}
+.top4:hover {
+	color: rgb(47, 255, 75);
+	text-decoration: none;
+}

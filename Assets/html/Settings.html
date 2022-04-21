@@ -1,0 +1,58 @@
+<html lang="en">
+
+<head>
+    <title>HTML Form</title>
+    <link rel='stylesheet' type='text/css' href='https://mail.magma-mc.net/Assets/css/main.css'>
+    <link rel='stylesheet' type='text/css' href='https://mail.magma-mc.net/Assets/css/php.css'>
+    <script src='../js/main.js'></script>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Form Manager Settings</h1>
+        </br>
+    </div>
+    <form action="http://86.154.136.236/UserConfigs/send.php" method="GET">
+
+        <div class="input-holder">
+            <input class="input" name="FileName" id="FileName" type="text" value="" placeholder="FormName">
+        </div>
+        </br>
+
+        <div class="input-holder">
+            <input class="input" name="Subject" id="Subject" type="text" value="" placeholder="Subject">
+        </div>
+        </br>
+
+        <div class="input-holder">
+            <input class="input" name="Admin_Email" id="Email" type="email" value="" placeholder="Admin Email">
+        </div>
+        </br>
+
+        <div class="input-holder">
+            <input class="input" name="Reply" id="Reply" type="text" value="" placeholder="Reply 'true/false'">
+        </div>
+        </br>
+
+        <!--<div class="input-holder">
+                <input class="input" name="Reply_Message" id="Reply_Message" type="text" value="" placeholder="Reply Message 'Eg. Hello \$User_Email your \$Subject Form submition. Will be read soon please wait.'">
+            </div>
+						</br>-->
+
+        <div class="input-holder">
+            <input class="input" name="Print_Form" id="Print" type="text" value="" placeholder="Print Form 'true/false'">
+        </div>
+        </br>
+
+        <div class="input-holder">
+            <input class="input" name="Form__Redirect" id="Redirect" type="url" value="" placeholder="Redirect">
+        </div>
+        </br>
+
+        </br>
+        <button class="button" type="submit">Sumbit</button>
+    </form>
+    <button onclick="wlh('https://mail.magma-mc.net/UserConfigs/')" class="other-button">Back</button>
+</body>
+
+</html>

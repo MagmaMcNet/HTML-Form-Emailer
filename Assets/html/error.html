@@ -1,0 +1,30 @@
+<html lang="en">
+    <head>
+        <title>HTML Form</title>
+				<link rel='stylesheet' type='text/css' href='https://mail.magma-mc.net/Assets/css/main.css'>
+				<link rel='stylesheet' type='text/css' href='https://mail.magma-mc.net/Assets/css/php.css'>
+    </head>
+    
+    <body>
+			<div id="header">
+				<h1>HTML Form Template</h1>
+				</br>
+			</div>
+        <form action="../../../" method="POST">
+            <div class="input-holder">
+                <input class="input" name="Form[Email]" id="Email" type="email" value="" placeholder="email">
+            </div>
+
+            <div class="input-holder">
+                <input class="input" name="Form[Message]" id="message" type="text" value="" placeholder="Message">
+            </div>
+
+            <div id="PHP values">
+							<input name="Form[subject]" type="hidden" value="TestIt page">
+							<input name="Form[Print]" type="hidden" value="true">
+            </div>
+						</br>
+            <button class="button" type="submit">Sumbit</button>
+        </form>
+    </body>
+</html>

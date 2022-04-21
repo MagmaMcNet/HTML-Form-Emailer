@@ -1,0 +1,161 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Full-width input fields */
+input[type=email], input[type=password], input[type=UserName] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #bac4ce;
+  border-radius: 2px;
+  transition: all 400ms ease;
+}
+
+/* Add a background color when the inputs get focus */
+input[type=email]:focus, input[type=password]:focus {
+  background-color: #e9f0ff;
+  outline: none;
+  border-radius: 5px;
+  transition: all 400ms ease;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity:1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  background-color: #f44336;
+}
+
+
+/* Add padding to container elements */
+.container {
+  padding: 16px;
+  background-color: #3c4b5a;
+}
+
+
+
+/* The Modal (background) */
+h1, label, p {
+	color: white;
+}
+
+.modal {
+  display: block; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  backdrop-filter: blur(2px);
+	background-color: #272d33;
+  padding-top: 50px;
+
+}
+
+/* Modal Content/Box */
+.modal-content {
+	
+  border-radius: 5px;
+  background-color: #3c4b5a;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 5px solid #394652;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+ 
+/* The Close Button (x) */
+.close {
+  right: 8%;
+  position: absolute;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+button {
+  overflow: hidden;
+  font-size: 14px;
+  padding: 8px 20px;
+  margin-right: 12px;
+  border: 2px solid;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  background: transparent;
+  text-transform: uppercase;
+  transition: all 400ms ease;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.26);
+  color: var(--primary);
+  border-color: var(--primary);
+  border-radius: 4px;
+  display: block;
+  margin: 8px auto;
+  text-align: center;
+  width: 25%;
+}
+
+button:hover::after {
+  height: 100%;
+  width: 136%;
+}
+
+button::before,
+button::after {
+  height: 100%;
+  left: -36%;
+  top: 0;
+  width: 0;
+  transform: skew(50deg);
+  transform-origin: top left;
+  transition: all 400ms ease;
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--primary);
+}
+button:hover {
+  transition: 0.8s ease color;
+  transition: 0.4s cubic-bezier(0, 0, 0, 1) width;
+  color: rgb(255, 255, 255);
+  font-size: 15px;
+  width: 38%;
+}

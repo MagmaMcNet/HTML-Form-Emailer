@@ -1,0 +1,8 @@
+/UserConfigs/*
+!/UserConfigs/files/*
+!/UserConfigs/send.php
+!/UserConfigs/index.php
+!/UserConfigs/SignUp.php
+Gmail.ini.php
+Uploads/Public/*
+!/Uploads/Public/uploadedfiles
