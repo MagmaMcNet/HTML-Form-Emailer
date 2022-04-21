@@ -161,8 +161,6 @@ if (!$mail->send()) {
 							} else {
 								echo "<h1>Easy HTML Email Form</h1>";
 								echo "<br></br>";
-								//echo "<h3 class='center'>Help setting up mailer on your website?</h3>";
-								//echo EmbedFrame("/$Version/Help/index.php", "550px", "1350px");
 								
 							}?>
 					</div>
@@ -222,8 +220,11 @@ if (!$mail->send()) {
 
 				$mail->Subject = $Form__Subject;
 
-				$mail->MsgHTML("Your " . $Form__Subject . " Form submition. Will be read soon please wait.");
-
+				if (isset($Form__Reply_Message)) {
+					$mail->MsgHTML($Form__Reply_Message);
+				} else {
+					$mail->MsgHTML("Your " . $Form__Subject . " Form submition. Will be read soon please wait.");
+				}
 				$mail->send();
 				}
 	}

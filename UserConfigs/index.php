@@ -54,7 +54,7 @@ $edit_files = true;
 $default_timezone = 'Etc/UTC'; // UTC
 
 // Root path for file manager
-// use absolu$_SERVER['DOCUMENT_ROOT']ry i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
+// use i.e: '/var/www/folder' or $_SERVER['DOCUMENT_ROOT'].'/folder'
 $root_path = $_SERVER['DOCUMENT_ROOT'].'/UserConfigs/';
 
 // Root url for links in file manager.Relative to $http_host. Variants: '', 'path/to/subfolder'
