@@ -2,10 +2,7 @@
 require_once 'vendor/autoload.php';
   
 // init configuration
-$clientID = '413813864766-jgejpelt2uhvba6803g002fi6hebec7i.apps.googleusercontent.com';
-$clientSecret = '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';
-$redirectUri = 'https://mail.magma-mc.net/Assets/Redirect.php';
-   
+ 
 // create Client Request to access Google API
 $client = new Google_Client();
 $client->setClientId($clientID);
