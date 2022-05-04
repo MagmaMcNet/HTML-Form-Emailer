@@ -48,7 +48,7 @@ include $_SERVER['DOCUMENT_ROOT']."/Version.php";
 	<br>
 		<?php if($_COOKIE["UserID"] == null) {
 		?>
-	<a href="https://mail.magma-mc.net/UserConfigs/SignUp.php"><i class="fa fa-info"></i> SignUp</a>
+	<a href="/UserConfigs/SignUp.php"><i class="fa fa-info"></i> SignUp</a>
 	<br>
 <?php }?>
 	</span>

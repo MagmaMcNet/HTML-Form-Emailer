@@ -6,49 +6,48 @@ echo $url;
 console.log(window.location.href)
 </script>
 <?php
-if (strpos($url,'car') !== false) {
-    echo 'Car exists.';
-} else {
-    echo 'No cars.';
-}
-echo "<pre>".print_r($GLOBALS,true)."</pre>";
 if (isset($_REQUEST["SignUp"])) {
-	$Form = $_REQUEST["SignUp"];
-	if (file_exists($Form["UserName"])) {
-		define("Form",$Form["UserName"]);
-		// account exists
-		include $Form["UserName"]."/User_Data.php";
-
-		if($Form["Email"] != $Email or $Form["Password"] != $password) {
-			echo "<script>"."alert('Incorrect Email Or Password')"."</script>";
-		} 
-
-		if($password != $Form["Password"] or $password != $Form["PasswordR"]) {
-			echo "<script>"."alert('Password Incorrect')"."</script>";
+	if ($_REQUEST["Login"] == "true") {
+		// Login
+		$Form = $_REQUEST["SignUp"];
+		if (file_exists($Form["UserName"])) {
+			include $Form["UserName"]."/User_Data.php";
+			if (password_verify($Form["Password"], $password)) {
+				setcookie("UserID", $Form["UserName"], 0, "/");
+				echo "<script>alert('Logined in')</script>";
+			} else {
+				echo "<script>alert('login wronge password')</script>";
+			}
 		} else {
-			setcookie("UserID", $Form["UserName"], 0, "/");
-			echo "<script>"."window.location.href = ('https://mail.magma-mc.net')"."</script>";
+			echo "<script>alert('login account not exist')</script>";
+
 		}
 	} else {
-		// new account
-		if($Form["Password"] != $Form["PasswordR"] and $Form["Email"] != $Email) {
-			echo "<script>"."alert('Password or Email Does not match')"."</script>";
+		// Sign Up
+		$Form = $_REQUEST["SignUp"];
+		if (!file_exists($Form["UserName"])) {
+			if ($Form["Password"] == $Form["PasswordR"]) {
+				// Password Same
+				mkdir($Form["UserName"], 0777, true);
+				$Account = fopen($Form["UserName"]."/" . "User_Data" . ".php", "w");
+
+				$Email = "\$Email = '" . $Form["Email"] . "';";
+				$password = "\$password = '" . password_hash($Form["Password"], PASSWORD_DEFAULT) . "';";
+
+				fwrite($Account, "<?php\n");
+				fwrite($Account, $Email."\n");
+				fwrite($Account, $password."\n");
+				fwrite($Account, "\n?>");
+
+				fclose($Account);
+				setcookie("UserID", $Form["UserName"], 0, "/");
+				echo "<script>alert('account done')</script>";
+			} else {
+				echo "<script>alert('Password Does not Match')</script>";
+			}
 		} else {
+			echo "<script>alert('Acount allready exists')</script>";
 
-			mkdir($Form["UserName"], 0777, true);
-			$Account = fopen($Form["UserName"]."/" . "User_Data" . ".php", "w");
-
-			$Email = "\$Email = '" . $Form["Email"] . "';";
-			$password = "\$password = '" . $Form["Password"] . "';";
-
-			fwrite($Account, "<?php\n");
-			fwrite($Account, $Email."\n");
-			fwrite($Account, $password."\n");
-			fwrite($Account, "\n?>");
-
-			fclose($Account);
-			setcookie("UserID", $Form["UserName"], 0, "/");
-			echo "<script>"."window.location.href = ('https://mail.magma-mc.net')"."</script>";
 		}
 	}
 }
@@ -82,10 +81,27 @@ if (isset($_REQUEST["SignUp"])) {
   <form class="modal-content">
     <div class="container">
       <h1>Sign Up</h1>
-      <p>Please fill in this form to create an account. or <a href="?#=a">SignIn</a></p>
+	  <?php
+		if ($_REQUEST["Login"] != "true") {
+			?>
+    		<p>Please fill in this form to create an account. or <a href="?Login=true">SignIn</a></p>
+			<?php
+		} else {
+			?>
+    		<p>Please fill in this form to Login. or <a href="?Login=false">SignUp</a></p>
+			<?php
+		}
+		?>
       <hr>
-      <label for="email"><b>Email</b></label>
-      <input type="email" placeholder="Enter Email" name="SignUp[Email]" required>
+	  <?php
+		if ($_REQUEST["Login"] != "true") {
+			?>
+			<label for="email"><b>Email</b></label>
+			<input type="email" placeholder="Enter Email" name="SignUp[Email]" required>
+			<?php
+		}
+		?>
+      
 
       <label for="UserName"><b>UserName</b></label>
       <input type="UserName" placeholder="Enter Username" name="SignUp[UserName]" required>
@@ -93,10 +109,19 @@ if (isset($_REQUEST["SignUp"])) {
       <label for="psw"><b>Password</b></label>
       <input type="password" placeholder="Enter Password" name="SignUp[Password]" required>
 
-      <label for="psw-repeat"><b>Repeat Password</b></label>
-      <input type="password" placeholder="Repeat Password" name="SignUp[PasswordR]" required>
+		<?php
+	  	if ($_REQUEST["Login"] != "true") {
+			?>
+			<label for="psw-repeat"><b>Repeat Password</b></label>
+     		<input type="password" placeholder="Repeat Password" name="SignUp[PasswordR]" required>
+			<?php
+		} else {
+			?>
+     		<input type="hidden" placeholder="Repeat Password" name="Login" value="true">
+			<?php
+		}
+	  ?>
 
-      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
       <button type="button" onclick="back()" class="cancelbtn">Cancel</button>
       <button type="submit" class="signupbtn">Sign Up</button>
