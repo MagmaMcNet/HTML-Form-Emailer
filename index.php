@@ -47,9 +47,6 @@ include 'mail.ini.php';
 include 'Version.php';
 
 SetHeader($Version);
-#
-
-echo shell_exec("a.py");
 
 //
 
@@ -100,7 +97,7 @@ $mail->Username = $User1;
 //Password to use for SMTP authentication
 $mail->Password = $Pass1;
 //Set who the message is to be sent from
-$mail->setFrom('mail@magma-mc.net', 'mail.magma-mc.net');
+$mail->setFrom(str_replace('***', '@', $CONFIG_EMAILNAME), str_replace('***', '.', $CONFIG_EMAILNAME));
 //Set an alternative reply-to address
 //$mail->addReplyTo('replyto@', 'First Last');
 //Set who the message is to be sent to
@@ -144,7 +141,11 @@ if(isset($_FILES["Form"]["name"]["File"])) {
 
 }
 	if ($sendthisfile == true) {
-		$mail->AddAttachment($File_Uploaded);
+		if ($CONFIG_SENDFILENAME == false) {
+			$mail->AddAttachment($File_Uploaded);
+		} else {
+			// not added yet
+		}
 	}
 
 if (!$mail->send()) {
@@ -165,15 +166,16 @@ if (!$mail->send()) {
 							}?>
 					</div>
 					<div><?php
+						if (isset($_POST['Form'])) {
 						echo "<h2>Options</h2>";
 						echo "<p>PHP Mailer Version: " . $Version . "</p>";
 						echo "<p>Reply To User: " . $Form__Reply . "</p>";
 						echo "<p>Subject: " . $Form__Subject . "</p>";
 						echo "<p>File Upload: " . $File . "</p>";
 						echo "<p>Print Post: " . $Form__Print_Form . "</p>";
+						}
 					echo "</div>";
 			echo "</body>";
-			echo GetFile("Assets/html/CopyRight.co");
 		echo "</html>";
 } else {?>
 		<html lang='en'>
@@ -190,7 +192,6 @@ if (!$mail->send()) {
 						echo "<p>Print Post: " . $Form__Print_Form . "</p>";?>
 					</div>
 			</body><?php
-			echo GetFile("Assets/html/CopyRight.co");
 		echo "</html>";
 
 			if ($Form__Reply == "true") {
@@ -214,21 +215,42 @@ if (!$mail->send()) {
 				//Password to use for SMTP authentication
 				$mail->Password = $Pass1;
 				//Set who the message is to be sent from
-				$mail->setFrom('Mailer@mail.magma-mc.net', 'Mail.magma-mc.net');
+				$mail->setFrom(str_replace('***', '@', $CONFIG_NOREPLYNAME), str_replace('***', '.', $CONFIG_NOREPLYNAME));
 
 				$mail->addAddress($Email, '');
 
 				$mail->Subject = $Form__Subject;
 
 				if (isset($Form__Reply_Message)) {
-					$mail->MsgHTML($Form__Reply_Message);
+					$mail->MsgHTML(ReplyFormConvert($Form__Reply_Message));
 				} else {
 					$mail->MsgHTML("Your " . $Form__Subject . " Form submition. Will be read soon please wait.");
 				}
+
 				$mail->send();
 				}
 	}
 	setFooter($Version);
 if ($Form__Redirect != null) {
 	echo "<script>window.location.href = '" . $Form__Redirect . "'</script>";
+}
+
+function ReplyFormConvert($Message) {
+	// FORM DATA
+	$RMessage = str_replace('%SUBJECT', $Form__Subject, $Message);
+	$RMessage = str_replace('%FORM_EMAIL', $_SERVER["Email"], $RMessage);
+	$RMessage = str_replace('%ADMIN_EMAIL', $Form__Admin_Email, $RMessage);
+	
+	// TIME
+	$RMessage = str_replace('%TIME[HR]', date("H"), $RMessage);
+	$RMessage = str_replace('%TIME[MIN]', date("i"), $RMessage);
+	$RMessage = str_replace('%TIME[SEC]', date("s"), $RMessage);
+	$RMessage = str_replace('%TIME', date("H:i:s"), $RMessage);
+
+	// DATE
+	$RMessage = str_replace('%DATE[Y]', date("Y"), $RMessage);
+	$RMessage = str_replace('%DATE[M]', date("m"), $RMessage);
+	$RMessage = str_replace('%DATE[D]', date("d"), $RMessage);
+	$RMessage = str_replace('%DATE', date('Y/m/d'), $RMessage);
+	return $RMessage;
 }

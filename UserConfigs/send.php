@@ -27,7 +27,7 @@ if (isset($_COOKIE["UserID"]) and isset($_REQUEST["FileName"])) {
 		"\";";
 
 	$Form__Reply_Message = 
-		"\$Reply_Message = \"" . 
+		"\$Form__Reply_Message = \"" . 
 		str_replace( "\\", "", $_REQUEST["Reply_Message"] ) . 
 		"\";";
 
@@ -54,11 +54,19 @@ if (isset($_COOKIE["UserID"]) and isset($_REQUEST["FileName"])) {
 	?>
 	{'Status': '200'}
 	<?php
-	echo "<script>window.location.href = 'http://" . $_SERVER["HTTP_HOST"] . "'</script>";
+	echo "<script>window.location.href = '//" . $_SERVER["HTTP_HOST"] . "'</script>";
 }else {
-	?>
-	{'Status': '405'}
-	<?php
+	if(!isset($_COOKIE["UserID"])) {
+		?>
+		{'Status': '403'}
+		<button type="button" onclick='window.location.href = `//<?php echo $_SERVER['HTTP_HOST']?>/UserConfigs/SignUp.php`'>SignUp Or Login</button>
+		<?php
+	} else {
+		?>
+		{'Status': '405'}
+		<?php
+	}
+
 }
 
 

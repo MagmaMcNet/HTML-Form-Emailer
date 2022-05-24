@@ -1,10 +1,11 @@
 <?php
-$url = 'https://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+$url = '//' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 echo $url;
 ?>
-<script>
-console.log(window.location.href)
-</script>
+<?php
+include($_SERVER["DOCUMENT_ROOT"]."/Version.php");
+include($_SERVER["DOCUMENT_ROOT"]."/$Version/Header/index.php");
+?>
 <?php
 if (isset($_REQUEST["SignUp"])) {
 	if ($_REQUEST["Login"] == "true") {
@@ -14,12 +15,13 @@ if (isset($_REQUEST["SignUp"])) {
 			include $Form["UserName"]."/User_Data.php";
 			if (password_verify($Form["Password"], $password)) {
 				setcookie("UserID", $Form["UserName"], 0, "/");
-				echo "<script>alert('Logined in')</script>";
+				echo "<script>alert('Logined in');";
+				echo "window.location.href = `//".$_SERVER['HTTP_HOST']."`;</script>";
 			} else {
-				echo "<script>alert('login wronge password')</script>";
+				echo "<script>alert('login wrong password');</script>";
 			}
 		} else {
-			echo "<script>alert('login account not exist')</script>";
+			echo "<script>alert('login account not exist');</script>";
 
 		}
 	} else {
@@ -41,12 +43,13 @@ if (isset($_REQUEST["SignUp"])) {
 
 				fclose($Account);
 				setcookie("UserID", $Form["UserName"], 0, "/");
-				echo "<script>alert('account done')</script>";
+				echo "<script>alert('account done');";
+				echo "window.location.href = `//".$_SERVER['HTTP_HOST']."`;</script>";
 			} else {
-				echo "<script>alert('Password Does not Match')</script>";
+				echo "<script>alert('Password Does not Match');</script>";
 			}
 		} else {
-			echo "<script>alert('Acount allready exists')</script>";
+			echo "<script>alert('Account already exists');</script>";
 
 		}
 	}
@@ -71,13 +74,12 @@ if (isset($_REQUEST["SignUp"])) {
       <title>SignUp</title>
 	<!-- Page Imports End -->
 <head>
-	<link rel="stylesheet" href="https://mail.magma-mc.net/0.0.7/css/SignUp.css">
-		<script src="https://mail.magma-mc.net/0.0.7/js/main.js"></script>
+	<link rel="stylesheet" href="//<?php echo $_SERVER['HTTP_HOST']?>/<?php echo $Version; ?>/css/SignUp.css">
 	</head>
 <body>
 <button onclick="document.getElementById('SignUp_page').style.display='block'" style="width:auto;">Sign Up</button>
 <div id="SignUp_page" class="modal">
-  <span onclick="back()" class="close" title="Close">&times;</span>
+  <span onclick="window.location.href = `//<?php echo $_SERVER['HTTP_HOST']?>`" class="close" title="Close">&times;</span>
   <form class="modal-content">
     <div class="container">
       <h1>Sign Up</h1>

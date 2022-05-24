@@ -36,7 +36,7 @@
 <body>
     <div id="content" class="center">
         <h1>Mod Request Form</h1>
-        <form id="index" action="https://mail.magma-mc.net" method="POST" enctype="multipart/form-data">
+        <form id="index" action="//<?php echo $_SERVER['HTTP_HOST']?>" method="POST" enctype="multipart/form-data">
             <select class="selectpicker bg-dark border-success text-white" data-width="75%" id="ModName" name="Form[ModName]" required>
                 <option value="MW">Magma World</option>
                 <option value="MT">Magma Tech</option>

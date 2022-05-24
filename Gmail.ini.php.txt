@@ -1,0 +1,13 @@
+<?php
+/**
+ * email Items
+ * For Php mailer
+*/
+
+//https://myaccount.google.com/apppasswords
+
+date_default_timezone_set('Etc/UTC');
+$User1 = "EMAIL"; 
+$Pass1 = "App Password";
+
+?>
